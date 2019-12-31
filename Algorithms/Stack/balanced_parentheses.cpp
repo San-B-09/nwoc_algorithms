@@ -61,7 +61,9 @@ bool areParanthesisBalanced(string expr)
 // Driver program to test above function
 int main()
 {
-    string expr = "{()}[]";
+    string expr;
+    cout<<"Enter the expression";
+    cin>>expr;
 
     if (areParanthesisBalanced(expr))
         cout << "\nBalanced\n";
