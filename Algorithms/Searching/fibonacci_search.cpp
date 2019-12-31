@@ -21,14 +21,35 @@ void FibonacciSearch(int *a, int start, int end, int *fib, int index, int item) 
             FibonacciSearch(a, start, mid, fib, index-2, item);
 }
 
+/* Function to print an array */
+void printArray(int arr[], int size)
+{
+    int i;
+    for (i=0; i < size; i++)
+        cout << arr[i] << " ";
+    cout << endl;
+}
+
 int main() {
-  int n, i, fib[20], a[10]={3, 7, 55, 86, 7, 15, 26, 30, 46, 95};
+  int n, i;
+  cout<<"Enter the length of array: ";
+  cin>>n;
+
+  int fib[n], a[n];
+
+  cout<<"Enter the elements of array: \n";
+  for(i = 0; i<n; i++){
+    cin>>a[i];
+  }
+  cout<<"Entered Array: \n";
+  printArray(a, n);
+
   char ch;
   fib[0] = 0;
   fib[1] = 1;
   i = 1;
 
-  while(fib[i] < 10) {
+  while(fib[i] < n) {
     i++;
     fib[i] = fib[i-1] + fib[i-2];
   }
