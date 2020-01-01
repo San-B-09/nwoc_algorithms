@@ -1,62 +1,62 @@
 #include<iostream>
 using namespace std;
-void FibonacciSearch(int *a, int start, int end, int *fib, int index, int item) {
-  int i, mid;
+void FibonacciSearch(int *ip_arr, int start, int end, int *fib, int index, int item) {
+  int mid;
   mid = start+fib[index-2];
-  if(item == a[mid]) {
+  if(item == ip_arr[mid]) {
       cout<<"\n item found at "<<mid<<" index.";
       return;
-  } else if(item == a[start]) {
+  } else if(item == ip_arr[start]) {
       cout<<"\n item found at "<<start<<" index.";
       return;
-    } else if(item == a[end]) {
+    } else if(item == ip_arr[end]) {
         cout<<"\n item found at "<<end<<" index.";
         return;
       } else if(mid == start || mid == end) {
           cout<<"\nElement not found";
           return;
-        } else if(item > a[mid])
-            FibonacciSearch(a, mid, end, fib, index-1, item);
+        } else if(item > ip_arr[mid])
+            FibonacciSearch(ip_arr, mid, end, fib, index-1, item);
           else
-            FibonacciSearch(a, start, mid, fib, index-2, item);
+            FibonacciSearch(ip_arr, start, mid, fib, index-2, item);
 }
 
 /* Function to print an array */
-void printArray(int arr[], int size)
+void printArray(int ip_arr[], int size)
 {
-    int i;
-    for (i=0; i < size; i++)
-        cout << arr[i] << " ";
+    int arr_ind;
+    for (arr_ind=0; arr_ind < size; arr_ind++)
+        cout << ip_arr[arr_ind] << " ";
     cout << endl;
 }
 
 int main() {
-  int n, i;
+  int arr_len, arr_ind, ele;
   cout<<"Enter the length of array: ";
-  cin>>n;
+  cin>>arr_len;
 
-  int fib[n], a[n];
+  int fib[arr_len], ip_arr[arr_len];
 
   cout<<"Enter the elements of array: \n";
-  for(i = 0; i<n; i++){
-    cin>>a[i];
+  for(arr_ind = 0; arr_ind<arr_len; arr_ind++){
+    cin>>ip_arr[arr_ind];
   }
   cout<<"Entered Array: \n";
-  printArray(a, n);
+  printArray(ip_arr, arr_len);
 
   char ch;
   fib[0] = 0;
   fib[1] = 1;
-  i = 1;
+  arr_ind = 1;
 
-  while(fib[i] < n) {
-    i++;
-    fib[i] = fib[i-1] + fib[i-2];
+  while(fib[arr_ind] < arr_len) {
+    arr_ind++;
+    fib[arr_ind] = fib[arr_ind-1] + fib[arr_ind-2];
   }
   up:
   cout<<"\nEnter the Element to be searched: ";
-  cin>>n;
-  FibonacciSearch(a, 0, 9, fib, i, n);
+  cin>>ele;
+  FibonacciSearch(ip_arr, 0, 9, fib, arr_ind, ele);
   cout<<"\n\nDo you want to search more...enter choice(y/n)?";
   cin>>ch;
   if(ch == 'y' || ch == 'Y')
